@@ -64,9 +64,10 @@ WSGI_APPLICATION = 'tarly.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DJANGO_DB', 'tarly'),
-        'USER': os.environ.get('DJANGO_USER', 'tarly'),
-        'HOST': os.environ.get('DJANGO_DATABASE_HOST', 'localhost'),
+        'NAME': os.environ.get('POSTGRES_DB', 'tarly'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'password'),
+        'HOST': os.environ.get('DJANGO_DATABASE_HOST', 'db'),
         'PORT': os.environ.get('DJANGO_DATABASE_PORT', 5432),
         'CONN_MAX_AGE': 60,
     },
