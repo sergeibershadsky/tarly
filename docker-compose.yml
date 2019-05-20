@@ -15,8 +15,6 @@ services:
       build:
         context: .
         dockerfile: ./docker/Dockerfile
-        args:
-          DJANGO_ENV: development
       volumes:
         - .:/code
         - django-static:/var/www/django/static
