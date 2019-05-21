@@ -14,7 +14,7 @@ class BookShop(models.Model):
 class BookShopAbstract(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     shop = models.ForeignKey(BookShop, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField(default=0)
 
     class Meta:
         abstract = True
@@ -30,6 +30,11 @@ class Stock(BookShopAbstract):
     ) -> bool:
         """ Check weather is book available in current store"""
         return cls.objects.filter(book_id=book, shop_id=shop, quantity__gt=qty).exists()
+
+    @classmethod
+    def available_count(cls, book: Book, shop: BookShop) -> int:
+        obj, _ = cls.objects.get_or_create(book=book, shop=shop)
+        return obj.quantity
 
     class Meta:
         unique_together = ('book', 'shop')
