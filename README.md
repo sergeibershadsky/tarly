@@ -44,8 +44,13 @@ Copy `.env.example` to `.env` and fill variables
     /code # ./manage.py createsuperuser
     ```
 
+## Usage
+
+open http://localhost:8000 to view api documentation and use endpoints  
+
 ## Test  
 ```bash
      # ./manage.py test
 ```
+
        
