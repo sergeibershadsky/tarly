@@ -1,4 +1,5 @@
 import os
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -70,6 +71,7 @@ DATABASES = {
         'HOST': os.environ.get('DJANGO_DATABASE_HOST', 'db'),
         'PORT': os.environ.get('DJANGO_DATABASE_PORT', 5432),
         'CONN_MAX_AGE': 60,
+        'ATOMIC_REQUESTS': True
     },
 }
 # Password validation
