@@ -12,14 +12,12 @@ class SaleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def validate(self, attrs):
-        return attrs
-
-    def validate_quantity(self, qty):
+        qty = self.initial_data['quantity']
         if not Stock.is_available(book=self.initial_data['book'],
                                   shop=self.initial_data['shop'],
                                   qty=qty):
             raise ValidationError(f'Insufficient stock for {qty}')
-        return qty
+        return attrs
 
 
 class BookShopSerializer(serializers.ModelSerializer):
