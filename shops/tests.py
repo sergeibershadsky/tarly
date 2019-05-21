@@ -44,9 +44,9 @@ class ShopsTestCase(TestCase):
         self.assertIsInstance(response.json(), list)
         self.assertEqual(len(response.json()), 1)
         el = response.json()[0]
-        self.assertEqual(el['shop'], self.shop1.id)
-        self.assertEqual(el['book'], self.book1.id)
-        self.assertEqual(el['quantity'], sale)
+        self.assertEqual(el.get('shop'), self.shop1.id)
+        self.assertEqual(el.get('book'), self.book1.id)
+        self.assertEqual(el.get('quantity'), sale)
 
         self.assertEqual(
             first=old_quantity - sale,
