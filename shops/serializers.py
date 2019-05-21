@@ -31,7 +31,7 @@ class BookShopSerializer(serializers.ModelSerializer):
     def get_books_in_stock(self, store):
         return [
             {'id': stock.id, 'title': stock.book.title, 'copies_in_stock': stock.quantity}
-            for stock in Stock.objects.filter(book__publisher=self.publisher, shop=store)
+            for stock in Stock.objects.filter(book__publisher=self.publisher, shop=store).prefetch_related('book')
         ]
 
     def get_books_sold_count(self, store):
