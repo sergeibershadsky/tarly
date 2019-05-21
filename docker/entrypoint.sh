@@ -3,6 +3,8 @@
 set -o errexit
 set -o nounset
 
+python /code/manage.py migrate --noinput
+
 cmd="$*"
 
 postgres_ready () {
