@@ -16,6 +16,7 @@ python-dotenv = "^0.10.2"
 psycopg2_binary = "^2.8"
 coreapi = "^2.3"
 mimesis = "^3.2"
+nplusone = "^1.0"
 
 [tool.poetry.dev-dependencies]
 

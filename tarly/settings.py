@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 
@@ -19,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'nplusone.ext.django',
     'django_extensions',
     'rest_framework',
     'django_filters',
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'nplusone.ext.django.NPlusOneMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,3 +120,21 @@ if 'test' in sys.argv:
             'NAME': ':memory:',
         }
     }
+if DEBUG:
+    LOGGING = {
+        'version': 1,
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
+        },
+        'loggers': {
+            'nplusone': {
+                'handlers': ['console'],
+                'level': 'WARN',
+            },
+        },
+    }
+
+    NPLUSONE_LOGGER = logging.getLogger('nplusone')
+    NPLUSONE_LOG_LEVEL = logging.WARN
