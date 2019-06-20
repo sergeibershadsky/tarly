@@ -1,3 +1,7 @@
+# Description
+
+This is test task for https://shakurocom.github.io/BackEnd-Test/
+
 # Installation
 
 Copy `.env.example` to `.env` and fill variables
